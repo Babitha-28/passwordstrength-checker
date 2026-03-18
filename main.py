@@ -1,16 +1,19 @@
-password=input("Enter your password: ")
-score=0
+text=input("Enter your text:").lower()
 
-if len(password)>=6:
-    score=score+1
-if any(char.isdigit() for char in password):
-      score=score+1
-if any(char.isupper() for char in password):
-    score=score+1
-if score ==3:
-     print("strong password")
-elif score ==2:
-     print("medium password")
+positive_words=["happy","good","great","excellent","love"]
+negative_words=["sad","bad","angry","hate","worst"]
+
+score=0
+for word in positive_words:
+    if word in text:
+        score=score+1
+for word in negative_words:
+    if word in text:
+        score=score-1
+if score>0:
+    print("😁 positive")
+elif score<0:
+    print("😒negative")
 else:
-  print("weak password")
+    print("😐 neutral")
 
